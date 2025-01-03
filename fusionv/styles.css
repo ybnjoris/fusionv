@@ -1,0 +1,302 @@
+/* Styles de base */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+    background: url('assets/background.png') no-repeat center center fixed;
+    background-size: cover;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Container des boîtes */
+.info-boxes {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 300px;
+    margin-top: 15px; /* Espacement entre chaque box */
+    padding: 20px;
+}
+
+/* Styles des boîtes */
+.info-box {
+    display: flex;
+    background: linear-gradient(45deg, #ff7eb3, #ff758c); /* Dégradé par défaut */
+    border-radius: 10px;
+    padding: 20px;
+    color: white;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 0 15px 5px rgba(90, 1, 255, 0.466); /* Lueur blanche */
+    position: relative;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease-in-out; /* Animation lors du survol */
+}
+
+/* Effet de survol (augmentation de la lueur) */
+.info-box:hover {
+    box-shadow: 0 0 25px 10px rgba(90, 1, 255, 0.76);
+}
+
+/* Styles du contenu */
+.info-box .content h3 {
+    margin: 0;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.info-box .content p {
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+/* Couleurs vives et dégradés personnalisés */
+.info-box:nth-child(1) {
+    background: linear-gradient(45deg, #4a01f5, #7f01f5); /* Rose vif */
+}
+
+.info-box:nth-child(2) {
+    background: linear-gradient(45deg, #4a01f5, #7f01f5); /* Orange vif */
+}
+
+.info-box:nth-child(3) {
+    background: linear-gradient(45deg, #4a01f5, #7f01f5); /* Bleu vif */
+}
+
+/* Correspondance des couleurs des numéros */
+.info-box:nth-child(1) .number {
+    color: #7f01f5;
+}
+
+.info-box:nth-child(2) .number {
+    color: #7f01f5;
+}
+
+.info-box:nth-child(3) .number {
+    color: #7f01f5;
+}
+
+
+.btn {
+    background: linear-gradient(45deg, #4a01f5, #7f01f5); /* Dégradé violet */
+    border: 0px solid #4a01f5; /* Ajusté à la couleur du dégradé */
+    border-radius: 35px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.25s ease;
+    width: 210px;
+    position: relative;
+    height: 60px;
+    overflow: hidden;
+    box-shadow: 0px 5px 15px rgba(74, 1, 245, 0.5); /* Lueur */
+}
+
+/* Effet au survol */
+.btn:not(.loading):hover {
+    box-shadow: 0px 10px 25px rgba(74, 1, 245, 0.8); /* Lueur amplifiée */
+}
+
+/* Icône du bouton */
+.btn i {
+    font-size: 1.45rem;
+    position: absolute;
+    left: 0px;
+    pointer-events: none;
+    z-index: 10;
+    background: inherit;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.25s ease;
+}
+
+/* Texte du bouton */
+.btn .text {
+    width: 130px;
+    display: block;
+    position: relative;
+    pointer-events: none;
+    position: absolute;
+    left: 60px;
+}
+
+/* Animation de chargement */
+.loading-animate {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    z-index: 100;
+    border-radius: 50%;
+    top: 0px;
+    left: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    opacity: 0;
+    transition: all 0.25s ease;
+}
+
+.loading-animate:after {
+    content: '';
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-left: 3px solid #fff;
+    animation: loading infinite 0.8s ease 0.05s;
+    position: absolute;
+}
+
+.loading-animate:before {
+    content: '';
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    border-left: 3px solid #fff;
+    animation: loading infinite 0.8s linear;
+    position: absolute;
+    opacity: 0.6;
+}
+
+.btn.loading {
+    width: 60px;
+}
+
+.btn.loading i {
+    transform: rotate(-90deg);
+    padding-bottom: 4px;
+    padding-left: 3px;
+}
+
+.btn.loading .text {
+    transform: translate(-140px);
+}
+
+.btn.loading .loading-animate {
+    opacity: 1;
+}
+
+@keyframes loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.button-container {
+    position: absolute;
+    bottom: 80px; /* Distance par rapport au bas */
+    left: 50%;
+    transform: translateX(-50%); /* Centre horizontalement */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Barre de navigation */
+.navbar {
+    position: fixed;
+    top: 30px; /* Décalage de 30px vers le bas */
+    width: calc(100% - 40px); /* Réduction de la largeur totale pour un espace de 20px de chaque côté */
+    height: 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0); /* Transparence */
+    padding: 0 20px; /* 20px d'espace intérieur pour correspondre au design */
+    box-sizing: border-box;
+    z-index: 10; /* Toujours au-dessus */
+    margin-left: 20px; /* Assure un espace sur la gauche */
+    margin-right: 20px; /* Assure un espace sur la droite */
+}
+
+/* Partie gauche */
+.navbar-left {
+    display: flex;
+    align-items: center;
+}
+
+.server-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.server-logo {
+    height: 40px; /* Ajustez la taille du logo */
+    width: auto;
+}
+
+/* Partie droite */
+.navbar-right a {
+    text-decoration: none;
+    color: white;
+    margin-left: 20px;
+    font-size: 1.2rem;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.navbar-right a:hover {
+    color: #7f01f5;
+}
+
+.navbar-right a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(45deg, #4a01f5, #7f01f5);
+    transition: width 0.3s ease;
+}
+
+.navbar-right a:hover::after {
+    width: 100%;
+}
+
+/* Images à gauche et à droite */
+.image-left, .image-right {
+    position: fixed;
+    top: 0;
+    height: 100%;
+}
+
+.image-left {
+    left: 0;
+}
+
+.image-right {
+    right: 0;
+}
+
+.image-left img, .image-right img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+    display: block;
+}
